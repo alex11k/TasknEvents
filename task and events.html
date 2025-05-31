@@ -43,10 +43,22 @@
             background: #101D32 !important;
             color: white !important;
         }
+        #taskModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-    <div style="width: 1440px; height: 1024px; position: relative; background: rgba(255, 251.32, 251.32, 0.90); overflow: hidden">
+    <div style="width: 1440px; height: 1024px; position: relative; background: rgba(255, 251, 251, 0.9); overflow: hidden">
         <!-- Header -->
         <div style="width: 1444px; height: 100px; left: 0px; top: 0px; position: absolute; background: linear-gradient(90deg, #101D32 0%, #1a2a4a 100%)"></div>
         <img style="width: 58px; height: 58px; left: 25px; top: 21px; position: absolute" src="https://placehold.co/58x58" class="hover-effect" />
@@ -121,7 +133,7 @@
         </div>
         
         <!-- Add Task Modal -->
-        <div id="taskModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div id="taskModal">
             <div style="background: white; padding: 32px; border-radius: 16px; width: 400px;">
                 <h2>Add New Task</h2>
                 <input type="text" id="newTaskInput" placeholder="Task name" style="width: 100%; padding: 8px; margin: 16px 0; border: 1px solid #ddd; border-radius: 4px;">
@@ -165,7 +177,6 @@
         saveTaskBtn.addEventListener('click', () => {
             const taskText = newTaskInput.value.trim();
             if(taskText) {
-                // In a real app, you would add this to your tasks list
                 alert(`Task "${taskText}" would be added to your list!`);
                 taskModal.style.display = 'none';
                 newTaskInput.value = '';
@@ -181,16 +192,12 @@
         tasksTab.addEventListener('click', () => {
             tasksTab.classList.add('active');
             eventsTab.classList.remove('active');
-            tasksSection.style.display = 'block';
-            eventsSection.style.display = 'block';
             // In a complete implementation, you might hide/show different sections
         });
 
         eventsTab.addEventListener('click', () => {
             eventsTab.classList.add('active');
             tasksTab.classList.remove('active');
-            tasksSection.style.display = 'block';
-            eventsSection.style.display = 'block';
             // In a complete implementation, you might hide/show different sections
         });
     </script>
